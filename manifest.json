@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "YouTube Browser Extension",
+    "name": "YouTube Deaddicitifier",
     "version": "1.0",
     "permissions": ["storage"],
     "icons": {
@@ -18,4 +18,5 @@
             "js": ["content.js"]
         }
     ]
+
 }
