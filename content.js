@@ -44,12 +44,6 @@ const showSpeed = (speed) => {
 const adjustSpeed = (adjustment) => {
     const video = document.querySelector("video");
     if (video) {
-        // if ( (video.playbackRate === 0.25 && adjustment > 0) ||
-        //      (0.5 <= video.playbackRate && video.playbackRate <= 1.75) || 
-        //      (video.playbackRate === 2.0 && adjustment < 0) ) {
-        //         return;
-        // };
-
         video.playbackRate += adjustment;
         console.log(`Speed set to: ${video.playbackRate}x`);
         showSpeed(video.playbackRate);
@@ -64,15 +58,6 @@ document.addEventListener("keydown", (event) => {
         event.target.isContentEditable) {
             return;
     }
-
-    // const video = document.querySelector("video");
-    // if (video) {
-    //     if ( (video.playbackRate === 0.25 && adjustment > 0) ||
-    //          (0.5 <= video.playbackRate && video.playbackRate <= 1.75) ) { // || 
-    //         //  (video.playbackRate === 2.0 && adjustment < 0) ) {
-    //             return;
-    //     };
-    // }
 
     if (event.key === "<" || event.key === ">") {
         event.stopImmediatePropagation();

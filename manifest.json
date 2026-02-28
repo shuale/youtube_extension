@@ -4,10 +4,10 @@
     "version": "1.0",
     "permissions": ["storage"],
     "icons": {
-        "16" : "YouTube_browser_extension_icon.png",
-        "32" : "YouTube_browser_extension_icon.png",
-        "48" : "YouTube_browser_extension_icon.png",
-        "128": "YouTube_browser_extension_icon.png"
+        "16" : "icon.png",
+        "32" : "icon.png",
+        "48" : "icon.png",
+        "128": "icon.png"
     },
     "content_scripts": [
         {
@@ -18,5 +18,4 @@
             "js": ["content.js"]
         }
     ]
-
 }
