@@ -44,7 +44,7 @@ const showSpeed = (speed) => {
 const adjustSpeed = (adjustment) => {
     const video = document.querySelector("video");
     if (video) {
-        video.playbackRate += adjustment;
+        video.playbackRate = parseFloat((video.playbackRate + adjustment).toFixed(2));
         console.log(`Speed set to: ${video.playbackRate}x`);
         showSpeed(video.playbackRate);
         chrome.storage.local.set({ lastSpeed: video.playbackRate });
@@ -65,9 +65,9 @@ document.addEventListener("keydown", (event) => {
     }
 
     if (event.key === "<") {
-        adjustSpeed(-0.25);
+        adjustSpeed(-0.05);
     } else if (event.key === ">") {
-        adjustSpeed(+0.25);
+        adjustSpeed(+0.05);
     }
 }, true);
 
