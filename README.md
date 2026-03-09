@@ -1,4 +1,11 @@
-### To use this extension:
+Action | Keyboard Shortcut
+--: | --
+Decrease playback rate | `<` (`SHIFT`+`,`)
+Increase playback rate | `>` (`SHIFT`+`.`)
+Reset playback rate | `)` (`SHIFT`+`0`)
+
+
+## To use this extension:
 
 1. Download the `manifest.json`, `content.js` and `icon.png` files.
    - For each file, click on its name to see its contents and then click the *Download* button in the top right of the page that comes up.

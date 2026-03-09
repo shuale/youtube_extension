@@ -44,6 +44,9 @@ const showSpeed = (speed) => {
 const adjustSpeed = (adjustment) => {
     const video = document.querySelector("video");
     if (video) {
+        if (adjustment === 0) {
+            video.playbackRate = 1;
+        }
         video.playbackRate = parseFloat((video.playbackRate + adjustment).toFixed(2));
         console.log(`Speed set to: ${video.playbackRate}x`);
         showSpeed(video.playbackRate);
@@ -68,6 +71,8 @@ document.addEventListener("keydown", (event) => {
         adjustSpeed(-0.05);
     } else if (event.key === ">") {
         adjustSpeed(+0.05);
+    } else if (event.key === ")") {
+        adjustSpeed(0);
     }
 }, true);
 
