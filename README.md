@@ -3,6 +3,7 @@ Action | Keyboard Shortcut
 Decrease playback rate | `<` (`SHIFT`+`,`)
 Increase playback rate | `>` (`SHIFT`+`.`)
 Reset playback rate | `)` (`SHIFT`+`0`)
+Set exact rate | `SHIFT` + `number key(s)`
 
 
 ## To use this extension:

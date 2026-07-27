@@ -41,11 +41,12 @@ const showSpeed = (speed) => {
     }, 1000);
 }
 
-const adjustSpeed = (adjustment) => {
+const adjustSpeed = (adjustment, type = "relative") => {
     const video = document.querySelector("video");
     if (video) {
-        if (adjustment === 0) {
-            video.playbackRate = 1;
+        if (type === "absolute") {
+            video.playbackRate = Math.min(Math.max(adjustment, 1), 16);
+            adjustment = 0;
         }
         video.playbackRate = parseFloat((video.playbackRate + adjustment).toFixed(2));
         console.log(`Speed set to: ${video.playbackRate}x`);
@@ -54,12 +55,36 @@ const adjustSpeed = (adjustment) => {
     }
 };
 
+const numberKeys = {
+    "!" : 1,
+    "@" : 2,
+    "#" : 3,
+    "$" : 4,
+    "%" : 5,
+    "^" : 6,
+    "&" : 7,
+    "*" : 8,
+    "(" : 9,
+    ")" : 0
+};
+
+const keysPressed = {};
+
 document.addEventListener("keydown", (event) => {
     //Skip if the user is currently typing in an input field or comment box
     if (event.target.tagName === "INPUT" ||
         event.target.tagname === "TEXTAREA" ||
         event.target.isContentEditable) {
             return;
+    }
+
+    keysPressed[event.key] = true;
+    if (Object.keys(keysPressed).length === 3 && event.shiftKey && keysPressed["!"]) {
+        const otherKeys = Object.keys(keysPressed).filter(key => (key !== "!") && (key in numberKeys));
+        if (otherKeys.length > 0) {
+            adjustSpeed(10 + numberKeys[otherKeys[0]], "absolute");
+            return;
+        }
     }
 
     if (event.key === "<" || event.key === ">") {
@@ -71,10 +96,15 @@ document.addEventListener("keydown", (event) => {
         adjustSpeed(-0.05);
     } else if (event.key === ">") {
         adjustSpeed(+0.05);
-    } else if (event.key === ")") {
-        adjustSpeed(0);
+    } else if (event.key in numberKeys) {
+        adjustSpeed(numberKeys[event.key], "absolute");
     }
 }, true);
+
+// Track when a key is released
+window.addEventListener("keyup", (event) => {
+    delete keysPressed[event.key];
+});
 
 // Apply saved speed on startup and when video changes
 const applySavedSpeed = () => {
